@@ -1,6 +1,6 @@
-export function playAudio(audioElement, volume) {
+export function playAudio(audioElement, volume, startTime = 0) {
   audioElement.volume = volume;
-  audioElement.currentTime = 0;
+  audioElement.currentTime = startTime;
 
   const playPromise = audioElement.play();
 

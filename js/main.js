@@ -6,6 +6,6 @@ window.addEventListener("load", () => {
   const site = document.querySelector(".site");
 
   site.classList.add("is-live");
-});
 
-playAudio(mainMusic, 0.2);
+  playAudio(mainMusic, 0.2, 7);
+});
