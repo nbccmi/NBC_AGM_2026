@@ -14,13 +14,13 @@ playAudio(mainMusic, 0.2);
 
 // Organisation → Ticket Page
 const ticketTemplates = {
-  NBC: "/pages/tickets/nbc-ticket.html",
-  SACTWU: "/pages/tickets/sactwu-ticket.html",
-  ATASA: "/pages/tickets/atasa-ticket.html",
-  SACMA: "/pages/tickets/sacma-ticket.html",
-  EPCMA: "/pages/tickets/epcma-ticket.html",
-  SAAA: "/pages/tickets/saaa-ticket.html",
-  Other: "/pages/tickets/nbc-ticket.html",
+  NBC: "NBC_AGM_2026/pages/tickets/nbc-ticket.html",
+  SACTWU: "NBC_AGM_2026/pages/tickets/sactwu-ticket.html",
+  ATASA: "NBC_AGM_2026/pages/tickets/atasa-ticket.html",
+  SACMA: "NBC_AGM_2026/pages/tickets/sacma-ticket.html",
+  EPCMA: "NBC_AGM_2026/pages/tickets/epcma-ticket.html",
+  SAAA: "NBC_AGM_2026/pages/tickets/saaa-ticket.html",
+  Other: "NBC_AGM_2026/pages/tickets/nbc-ticket.html",
 };
 
 function generatePassId() {
