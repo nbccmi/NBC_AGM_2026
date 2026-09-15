@@ -44,7 +44,7 @@ select {
   width: 100%;
   min-height: 100vh;
 
-  overflow: hidden;
+  overflow-x: hidden;
 
   padding-bottom: 50px;
 
@@ -306,6 +306,12 @@ nav {
   color: #606a75;
 
   font-size: 10px;
+}
+
+.submit-button:disabled {
+  cursor: wait;
+  filter: saturate(0.65);
+  opacity: 0.75;
 }
 
 .success {

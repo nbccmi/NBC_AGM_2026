@@ -51,6 +51,7 @@ const carsContainer = document.getElementById("cars");
 const carouselDots = document.getElementById("carouselDots");
 
 const carName = document.getElementById("carName");
+const modalCarName = document.getElementById("modalCarName");
 const modalCarArt = document.getElementById("modalCarArt");
 const modalWallpaper = document.getElementById("modalWallpaper");
 const carModal = document.getElementById("carModal");
@@ -143,6 +144,10 @@ function renderCarousel() {
   const selectedCar = cars[selected];
 
   carName.textContent = selectedCar.name;
+
+  if (modalCarName) {
+    modalCarName.textContent = selectedCar.name;
+  }
 }
 
 /**

@@ -36,13 +36,20 @@
             Confirm your attendance and reserve your place on the grid.
           </p>
 
-          <form id="rsvpForm">
+          <form
+            id="rsvpForm"
+            action="https://script.google.com/macros/s/AKfycbwL2LNs5XYEX65G-lDzfc30fpcAVe1OhW28zNJ2M4neUSa-OCZ6b3Zd_sYtBnnpbVpTkg/exec"
+            method="post"
+            target="rsvpSubmissionFrame"
+            novalidate
+          >
             <div class="fields">
               <label>
                 FULL NAME
                 <input
                   name="name"
                   required
+                  maxlength="120"
                   autocomplete="name"
                   placeholder="Your full name"
                 />
@@ -54,7 +61,6 @@
                   name="organisation"
                   required
                   autocomplete="organization"
-                  placeholder="Organisation"
                 >
                   <option value="">Select your organisation</option>
                   <option value="ATASA">ATASA</option>
@@ -73,6 +79,7 @@
                   type="email"
                   name="email"
                   required
+                  maxlength="254"
                   autocomplete="email"
                   placeholder="you@example.com"
                 />
@@ -84,6 +91,7 @@
                   type="tel"
                   name="phone"
                   autocomplete="tel"
+                  maxlength="40"
                   placeholder="+27"
                 />
               </label>
@@ -97,6 +105,16 @@
                 <option value="Unable to attend">Unable to attend</option>
               </select>
             </label>
+
+            <input type="hidden" name="passId" />
+            <input type="hidden" name="event" value="NBC AGM 2026" />
+            <input
+              type="hidden"
+              name="venue"
+              value="The Maslow Hotel, Sandton"
+            />
+            <input type="hidden" name="date" value="28 October 2026" />
+            <input type="hidden" name="time" value="10:00 - 11:30" />
 
             <button type="submit" class="submit-button">
               CONFIRM ATTENDANCE
@@ -125,6 +143,8 @@
         </div>
       </section>
     </main>
+
+    <iframe name="rsvpSubmissionFrame" title="RSVP submission" hidden></iframe>
 
     <audio
       id="mainMusic"

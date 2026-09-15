@@ -7,140 +7,102 @@ const viewGridPass = document.getElementById("viewGridPass");
 const backToForm = document.getElementById("backToForm");
 const mainMusic = document.getElementById("mainMusic");
 
-const googleAppsScriptUrl =
-  "https://script.google.com/macros/s/AKfycbxSzAa_A04Y7Z8EhIh193o9ugz45U7YXQOyL50H3m84m_L89fHaDXV8i3Qn0xAtU9Anwg/exec";
-
-playAudio(mainMusic, 0.2);
-
-// Organisation → Ticket Page
 const ticketTemplates = {
-  NBC: "NBC_AGM_2026/pages/tickets/nbc-ticket.html",
-  SACTWU: "NBC_AGM_2026/pages/tickets/sactwu-ticket.html",
-  ATASA: "NBC_AGM_2026/pages/tickets/atasa-ticket.html",
-  SACMA: "NBC_AGM_2026/pages/tickets/sacma-ticket.html",
-  EPCMA: "NBC_AGM_2026/pages/tickets/epcma-ticket.html",
-  SAAA: "NBC_AGM_2026/pages/tickets/saaa-ticket.html",
-  Other: "NBC_AGM_2026/pages/tickets/nbc-ticket.html",
+  NBC: "tickets/nbc-ticket.html",
+  SACTWU: "tickets/sactwu-ticket.html",
+  ATASA: "tickets/atasa-ticket.html",
+  SACMA: "tickets/sacma-ticket.html",
+  EPCMA: "tickets/epcma-ticket.html",
+  SAAA: "tickets/saaa-ticket.html",
+  Other: "tickets/nbc-ticket.html",
 };
 
-function generatePassId() {
-  const year = "2026";
-  const timestamp = Date.now().toString().slice(-6);
-  const random = Math.floor(100 + Math.random() * 900);
+let isSubmitting = false;
+playAudio(mainMusic, 0.2);
 
-  return `NBC-${year}-${timestamp}-${random}`;
+function generatePassId() {
+  const random = window.crypto?.getRandomValues
+    ? window.crypto
+        .getRandomValues(new Uint32Array(1))[0]
+        .toString(36)
+        .toUpperCase()
+    : Math.random().toString(36).slice(2).toUpperCase();
+  return `NBC-2026-${Date.now().toString(36).toUpperCase()}-${random}`;
 }
 
 function getTicketTemplate(organisation) {
   return ticketTemplates[organisation] || ticketTemplates.Other;
 }
 
-rsvpForm.addEventListener("submit", async (event) => {
+function setSubmitting(submitButton, submitting) {
+  isSubmitting = submitting;
+  rsvpForm.setAttribute("aria-busy", String(submitting));
+  submitButton.disabled = submitting;
+  submitButton.innerHTML = submitting
+    ? "SUBMITTING..."
+    : "CONFIRM ATTENDANCE <span>→</span>";
+}
+
+rsvpForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  if (isSubmitting || !rsvpForm.reportValidity()) return;
 
   const formData = new FormData(rsvpForm);
-
-  const organisation = String(formData.get("organisation") || "").trim();
-
   const attendance = String(formData.get("attendance") || "").trim();
-
   const passData = {
     name: String(formData.get("name") || "").trim(),
-    organisation,
+    organisation: String(formData.get("organisation") || "").trim(),
     email: String(formData.get("email") || "").trim(),
     phone: String(formData.get("phone") || "").trim(),
     attendance,
-
     passId: generatePassId(),
-
     event: "NBC AGM 2026",
     venue: "The Maslow Hotel, Sandton",
     date: "28 October 2026",
     time: "10:00 - 11:30",
   };
 
+  console.log("RSVP Form Submitted:", passData);
+
   const submitButton = rsvpForm.querySelector(".submit-button");
 
-  submitButton.disabled = true;
-  submitButton.innerHTML = "SUBMITTING...";
+  rsvpForm.elements.passId.value = passData.passId;
+  setSubmitting(submitButton, true);
+  rsvpForm.submit();
 
-  try {
-    await fetch(googleAppsScriptUrl, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8",
-      },
-      body: JSON.stringify(passData),
-    });
-
-    /*
-     * ATTENDING
-     * Save the response and show the Grid Pass confirmation.
-     */
-    if (attendance === "Attending") {
-      sessionStorage.setItem("nbcGridPass", JSON.stringify(passData));
-
-      formContent.style.display = "none";
-      success.classList.add("show");
-
-      return;
-    }
-
-    /*
-     * UNABLE TO ATTEND
-     * Do not create/save a Grid Pass.
-     * Show a simple confirmation instead.
-     */
-    if (attendance === "Unable to attend") {
-      formContent.innerHTML = `
-        <div class="rsvp-response">
-          <span class="eyebrow">NBC AGM 2026 // RSVP RECEIVED</span>
-
-          <h1>THANK YOU FOR LETTING US KNOW.</h1>
-
-          <p>
-            Your response has been recorded.
-            We’re sorry you won’t be able to join us on the grid.
-          </p>
-
-          <p>
-            We hope to see you at a future NBC event.
-          </p>
-        </div>
-      `;
-
-      return;
-    }
-  } catch (error) {
-    console.error("RSVP submission error:", error);
-
-    alert(
-      "We could not submit your RSVP. Please check your connection and try again.",
-    );
-
-    submitButton.disabled = false;
-    submitButton.innerHTML = "CONFIRM ATTENDANCE <span>→</span>";
+  if (attendance === "Attending") {
+    sessionStorage.setItem("nbcGridPass", JSON.stringify(passData));
+    formContent.style.display = "none";
+    success.classList.add("show");
+  } else {
+    formContent.innerHTML = `<div class="rsvp-response" aria-live="polite"><span class="eyebrow">NBC AGM 2026 // RSVP RECEIVED</span><h1>THANK YOU FOR LETTING US KNOW.</h1><p>Your response has been recorded. We’re sorry you won’t be able to join us on the grid.</p><p>We hope to see you at a future NBC event.</p></div>`;
   }
 });
 
-// Open the correct ticket page.
 viewGridPass.addEventListener("click", () => {
-  const storedPass = sessionStorage.getItem("nbcGridPass");
-
-  if (!storedPass) {
-    return;
+  try {
+    const passData = JSON.parse(
+      sessionStorage.getItem("nbcGridPass") || "null",
+    );
+    if (passData)
+      window.location.href = getTicketTemplate(passData.organisation);
+  } catch {
+    sessionStorage.removeItem("nbcGridPass");
   }
-
-  const passData = JSON.parse(storedPass);
-
-  const ticketPage = getTicketTemplate(passData.organisation);
-
-  window.location.href = ticketPage;
 });
 
-// Allow the user to edit their response.
 backToForm.addEventListener("click", () => {
   success.classList.remove("show");
   formContent.style.display = "block";
+  setSubmitting(rsvpForm.querySelector(".submit-button"), false);
 });
+
+const invitationOrganisation = new URLSearchParams(window.location.search).get(
+  "organisation",
+);
+if (
+  invitationOrganisation &&
+  Object.hasOwn(ticketTemplates, invitationOrganisation)
+) {
+  rsvpForm.elements.organisation.value = invitationOrganisation;
+}
