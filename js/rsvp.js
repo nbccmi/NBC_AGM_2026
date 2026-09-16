@@ -56,13 +56,7 @@ rsvpForm.addEventListener("submit", (event) => {
     phone: String(formData.get("phone") || "").trim(),
     attendance,
     passId: generatePassId(),
-    event: "NBC AGM 2026",
-    venue: "The Maslow Hotel, Sandton",
-    date: "28 October 2026",
-    time: "10:00 - 11:30",
   };
-
-  console.log("RSVP Form Submitted:", passData);
 
   const submitButton = rsvpForm.querySelector(".submit-button");
 
