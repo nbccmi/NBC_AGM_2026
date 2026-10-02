@@ -1,30 +1,12 @@
 /* =========================================================
    NBC AGM 2026 — GRID PAGE
-   NBC TEXTILE x FORMULA 1 VISUAL REFRESH
-
-   NOTE:
-   - Existing HTML / JS structure is preserved.
-   - Carousel, modal, RSVP and wallpaper functionality are untouched.
-   - This stylesheet only changes the visual language.
    ========================================================= */
 
 :root {
-  --bg: #030506;
-  --bg-soft: #080d0d;
-  --panel: rgba(8, 13, 14, 0.82);
-
-  --red: #d71920;
-  --green: #007a4d;
-  --gold: #f2c230;
-  --blue: #003f7d;
-
-  --cream: #f4f0e6;
+  --bg: #030508;
+  --red: #ef1722;
   --text: #f5f6f8;
-  --muted: #aeb5be;
-  --muted-dark: #747d86;
-
-  --line: rgba(255, 255, 255, 0.14);
-  --line-soft: rgba(255, 255, 255, 0.07);
+  --line: rgba(255, 255, 255, 0.13);
 }
 
 /* =========================================================
@@ -75,25 +57,17 @@ a {
   transition: opacity 1.25s ease;
 
   background:
-    radial-gradient(ellipse at 8% 18%, rgba(0, 122, 77, 0.1), transparent 28%),
     radial-gradient(
-      ellipse at 91% 36%,
-      rgba(242, 194, 48, 0.07),
-      transparent 25%
+      ellipse at 15% 25%,
+      rgba(239, 23, 34, 0.08),
+      transparent 32%
     ),
     radial-gradient(
-      ellipse at 80% 78%,
-      rgba(0, 63, 125, 0.08),
-      transparent 28%
-    ),
-    var(--bg);
+      ellipse at 85% 65%,
+      rgba(239, 23, 34, 0.06),
+      transparent 32%
+    );
 }
-
-.site.is-live {
-  opacity: 1;
-  visibility: visible;
-}
-
 .car-actions {
   position: relative;
   z-index: 20;
@@ -104,13 +78,48 @@ a {
 
   margin-top: 10px;
 }
+.site.is-live {
+  opacity: 1;
+  visibility: visible;
+}
 
 /* =========================================================
    HERO
    ========================================================= */
+.hero-title {
+  color: var(--red);
+
+  font:
+    700 italic clamp(24px, 2vw, 34px) / 1 Rajdhani,
+    sans-serif;
+}
+
+.hero-main-title {
+  margin: 8px 0 14px;
+  color: #aeb5be;
+
+  font:
+    700 italic clamp(22px, 2.5vw, 30px) / 1 Rajdhani,
+    sans-serif;
+
+  letter-spacing: 0.02em;
+}
+
+.hashtag {
+  display: block;
+  margin-top: 18px;
+  margin-bottom: 18px;
+
+  color: #8f969f;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0em;
+  text-transform: uppercase;
+}
 
 .hero {
   position: relative;
+
   min-height: 100vh;
 
   display: flex;
@@ -118,114 +127,30 @@ a {
 
   overflow: hidden;
 
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.08) 0%,
-      rgba(0, 0, 0, 0.02) 45%,
-      rgba(0, 0, 0, 0.18) 100%
-    ),
-    url("../assets/background.png") center top / 100% auto no-repeat,
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.018) 0,
-      rgba(255, 255, 255, 0.018) 1px,
-      transparent 1px,
-      transparent 7px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.012) 0,
-      rgba(255, 255, 255, 0.012) 1px,
-      transparent 1px,
-      transparent 9px
-    ),
-    radial-gradient(ellipse at 18% 18%, rgba(0, 122, 77, 0.1), transparent 31%),
-    radial-gradient(
-      ellipse at 82% 23%,
-      rgba(242, 194, 48, 0.07),
-      transparent 27%
-    ),
-    radial-gradient(
-      ellipse at 74% 62%,
-      rgba(0, 63, 125, 0.07),
-      transparent 34%
-    ),
-    linear-gradient(145deg, #1a2222 0%, #202828 36%, #151b1c 72%, #101416 100%);
+  background: radial-gradient(
+    ellipse at 50% 42%,
+    #394452 0%,
+    #111820 24%,
+    #05070b 65%
+  );
 }
 
-/* South African textile ribbons */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: -12% -8%;
-
-  pointer-events: none;
-
-  opacity: 0.62;
-
-  background:
-    linear-gradient(
-      118deg,
-      transparent 0 12%,
-      rgba(0, 122, 77, 0.28) 13%,
-      rgba(0, 122, 77, 0.05) 16%,
-      transparent 19%
-    ),
-    linear-gradient(
-      125deg,
-      transparent 0 29%,
-      rgba(242, 194, 48, 0.22) 30%,
-      rgba(242, 194, 48, 0.04) 33%,
-      transparent 36%
-    ),
-    linear-gradient(
-      133deg,
-      transparent 0 45%,
-      rgba(215, 25, 32, 0.18) 46%,
-      rgba(215, 25, 32, 0.03) 49%,
-      transparent 52%
-    ),
-    linear-gradient(
-      141deg,
-      transparent 0 62%,
-      rgba(0, 63, 125, 0.22) 63%,
-      rgba(0, 63, 125, 0.04) 66%,
-      transparent 69%
-    );
-
-  filter: blur(2px);
-}
-
-/* Thread / stitch layer */
 .hero::after {
   content: "";
+
   position: absolute;
   inset: 0;
 
   pointer-events: none;
 
-  z-index: 5;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.76),
+    transparent 43%,
+    #030508 100%
+  );
 
-  background:
-    repeating-linear-gradient(
-      118deg,
-      transparent 0 46px,
-      rgba(242, 194, 48, 0.1) 47px 48px,
-      transparent 49px 98px
-    ),
-    repeating-linear-gradient(
-      62deg,
-      transparent 0 79px,
-      rgba(0, 122, 77, 0.08) 80px 81px,
-      transparent 82px 155px
-    ),
-    linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.42),
-      transparent 32%,
-      rgba(0, 0, 0, 0.68) 100%
-    );
+  z-index: 5;
 }
 
 /* =========================================================
@@ -243,11 +168,14 @@ a {
   width: min(calc(100% - 70px), 1440px);
 
   margin: 0 auto;
+
+  padding: 32px 0;
 }
 
 .brand {
   display: flex;
   align-items: center;
+
   gap: 12px;
 }
 
@@ -258,6 +186,7 @@ a {
 .brand-mark {
   font-size: 43px;
   font-weight: 900;
+
   letter-spacing: -0.1em;
 }
 
@@ -272,33 +201,9 @@ a {
 }
 
 .nav-tag {
-  position: relative;
-
-  padding: 8px 0;
-
   font-size: 10px;
+
   letter-spacing: 0.22em;
-}
-
-.nav-tag::before {
-  content: "";
-
-  position: absolute;
-  left: -18px;
-  right: -18px;
-  bottom: 0;
-
-  height: 1px;
-
-  background: linear-gradient(
-    90deg,
-    var(--green),
-    var(--gold),
-    var(--red),
-    var(--blue)
-  );
-
-  opacity: 0.75;
 }
 
 .nav-tag i {
@@ -309,7 +214,7 @@ a {
 
   margin-left: 10px;
 
-  background: var(--gold);
+  background: var(--red);
 
   vertical-align: middle;
 }
@@ -324,96 +229,12 @@ a {
 
   text-align: center;
 
-  padding: 8px 20px 24px;
-}
-
-.hero-copy::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-
-  top: 0;
-  left: 50%;
-  width: min(900px, 96%);
-  height: 100%;
-
-  transform: translateX(-50%);
-
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(0, 0, 0, 0.18) 42%,
-    transparent 75%
-  );
-
-  filter: blur(10px);
-  pointer-events: none;
-}
-
-.hero-title {
-  margin-top: 0px;
-  margin-bottom: 0px;
-
-  color: #ffffff;
-
-  font:
-    700 italic clamp(24px, 2vw, 34px) / 1 Rajdhani,
-    sans-serif;
-
-  letter-spacing: 0.03em;
-
-  text-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.85),
-    0 5px 18px rgba(0, 0, 0, 0.65);
-}
-
-.hero-title::after {
-  content: "";
-
-  display: block;
-
-  width: 90px;
-  height: 2px;
-
-  margin: 12px auto 0;
-
-  background: linear-gradient(
-    90deg,
-    var(--green),
-    var(--gold),
-    var(--red),
-    var(--blue)
-  );
-}
-
-.hero-main-title {
-  display: inline-block;
-
-  margin: 2px auto 0;
-  padding: 5px 16px 6px;
-
-  color: #ffffff;
-
-  font:
-    700 italic clamp(22px, 2.5vw, 30px) / 1 Rajdhani,
-    sans-serif;
-
-  letter-spacing: 0.02em;
-
-  background: rgba(0, 0, 0, 0.42);
-
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.38);
-
-  text-shadow:
-    0 2px 3px rgba(0, 0, 0, 0.95),
-    0 4px 12px rgba(0, 0, 0, 0.85);
+  padding-top: 55px;
+  padding-bottom: 50px;
 }
 
 .event-kicker {
-  color: var(--gold);
+  color: #aeb5be;
 
   font-size: 17px;
   font-weight: 700;
@@ -443,60 +264,8 @@ a {
 }
 
 .subline strong {
-  color: var(--gold);
+  color: var(--red);
   font-weight: 500;
-}
-
-.hashtag {
-  display: block;
-
-  margin-top: 10px;
-  margin-bottom: 0;
-
-  color: #aeb5be;
-
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-/* =========================================================
-   MACHINE / GRID SECTION
-   ========================================================= */
-
-.machine-section {
-  position: relative;
-  overflow: hidden;
-
-  background:
-    radial-gradient(ellipse at 50% 15%, rgba(0, 122, 77, 0.1), transparent 38%),
-    linear-gradient(180deg, #101719 0%, #080d0f 45%, #030506 100%);
-}
-
-.machine-section::before {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  pointer-events: none;
-
-  background:
-    repeating-linear-gradient(
-      90deg,
-      transparent 0 78px,
-      rgba(255, 255, 255, 0.018) 79px 80px,
-      transparent 81px 158px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0 44px,
-      rgba(255, 255, 255, 0.014) 45px 46px,
-      transparent 47px 90px
-    );
-
-  opacity: 0.7;
 }
 
 /* =========================================================
@@ -504,10 +273,11 @@ a {
    ========================================================= */
 
 .car-showcase {
+  border-top: 1px solid var(--line);
   position: relative;
   z-index: 10;
 
-  border-top: 1px solid var(--line);
+  flex: 1;
 
   min-height: 560px;
 
@@ -515,8 +285,8 @@ a {
 
   margin: 0 auto;
 
-  padding-top: 18px;
-  padding-bottom: 24px;
+  padding-top: 25px;
+  padding-bottom: 35px;
 
   display: flex;
   flex-direction: column;
@@ -525,58 +295,26 @@ a {
   perspective: 1000px;
 }
 
-/* Textile band behind car showcase */
-.car-showcase::before {
-  content: "";
-
-  position: absolute;
-
-  left: -10%;
-  right: -10%;
-  top: 18%;
-  height: 30%;
-
-  pointer-events: none;
-
-  opacity: 0.22;
-
-  background: repeating-linear-gradient(
-    90deg,
-    transparent 0 38px,
-    rgba(242, 194, 48, 0.55) 39px 40px,
-    transparent 41px 78px
-  );
-
-  transform: skewY(-5deg);
-  filter: blur(0.4px);
-}
-
 /* =========================================================
-   SHOWCASE GLOW
+   RED GLOW
    ========================================================= */
 
 .showcase-glow {
   position: absolute;
 
-  left: 20%;
-  right: 20%;
+  left: 25%;
+  right: 25%;
   top: 35%;
 
-  height: 150px;
+  height: 130px;
 
-  background:
-    radial-gradient(
-      ellipse at 35% 50%,
-      rgba(0, 122, 77, 0.14),
-      transparent 45%
-    ),
-    radial-gradient(
-      ellipse at 65% 50%,
-      rgba(215, 25, 32, 0.15),
-      transparent 45%
-    );
+  background: radial-gradient(
+    ellipse,
+    rgba(239, 23, 34, 0.14),
+    transparent 68%
+  );
 
-  filter: blur(24px);
+  filter: blur(20px);
 
   pointer-events: none;
 
@@ -584,7 +322,7 @@ a {
 }
 
 /* =========================================================
-   ROAD / TEXTILE RUNWAY
+   ROAD
    ========================================================= */
 
 .road {
@@ -601,26 +339,13 @@ a {
   clip-path: polygon(29% 0, 71% 0, 100% 100%, 0 100%);
 
   background:
-    /* stitch marks */
     repeating-linear-gradient(
       90deg,
-      transparent 0 55px,
-      rgba(242, 194, 48, 0.12) 56px 58px,
-      transparent 59px 112px
+      transparent 0 82px,
+      rgba(255, 255, 255, 0.08) 83px 85px,
+      transparent 86px 165px
     ),
-    /* textile weave */
-    repeating-linear-gradient(
-        0deg,
-        rgba(255, 255, 255, 0.025) 0 1px,
-        transparent 1px 8px
-      ),
-    linear-gradient(
-      90deg,
-      rgba(0, 122, 77, 0.1),
-      rgba(5, 8, 9, 0.94) 30%,
-      rgba(5, 8, 9, 0.94) 70%,
-      rgba(0, 63, 125, 0.1)
-    );
+    linear-gradient(#151b22, #020304 74%);
 
   z-index: 2;
 
@@ -637,6 +362,7 @@ a {
   z-index: 15;
 
   width: 100%;
+
   height: 390px;
 
   display: flex;
@@ -645,7 +371,7 @@ a {
 }
 
 /* =========================================================
-   SPEED / THREAD LINES
+   SPEED LINES
    ========================================================= */
 
 .speed-line {
@@ -653,16 +379,9 @@ a {
 
   height: 2px;
 
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--green) 20%,
-    var(--gold) 50%,
-    var(--red) 75%,
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, var(--red), transparent);
 
-  filter: blur(0.8px);
+  filter: blur(1px);
 
   pointer-events: none;
 
@@ -752,8 +471,7 @@ a {
 
   object-fit: contain;
 
-  filter: drop-shadow(0 25px 24px rgba(0, 0, 0, 0.65))
-    drop-shadow(0 0 20px rgba(215, 25, 32, 0.08));
+  filter: drop-shadow(0 25px 24px rgba(0, 0, 0, 0.65));
 
   pointer-events: none;
 }
@@ -765,15 +483,15 @@ a {
 .car-card.active {
   transform: translate(-50%, -50%) translateY(-35px) scale(1.3);
 
-  opacity: 0.9;
+  opacity: 0.8;
 
-  filter: brightness(0.92);
+  filter: brightness(0.8);
 
   z-index: 10;
 }
 
 /* =========================================================
-   CAR POSITIONS
+   CAR TO THE LEFT
    ========================================================= */
 
 .car-card.left {
@@ -786,6 +504,10 @@ a {
   z-index: 4;
 }
 
+/* =========================================================
+   CAR TO THE RIGHT
+   ========================================================= */
+
 .car-card.right {
   transform: translate(85%, -50%) scale(0.78);
 
@@ -795,6 +517,10 @@ a {
 
   z-index: 4;
 }
+
+/* =========================================================
+   FAR LEFT
+   ========================================================= */
 
 .car-card.far-left {
   transform: translate(-285%, -50%) scale(0.58);
@@ -806,6 +532,10 @@ a {
   z-index: 2;
 }
 
+/* =========================================================
+   FAR RIGHT
+   ========================================================= */
+
 .car-card.far-right {
   transform: translate(185%, -50%) scale(0.58);
 
@@ -816,8 +546,13 @@ a {
   z-index: 2;
 }
 
+/* =========================================================
+   HIDDEN CAR
+   ========================================================= */
+
 .car-card.hidden {
   opacity: 0;
+
   pointer-events: none;
 }
 
@@ -829,6 +564,7 @@ a {
   position: absolute;
 
   top: 50%;
+
   z-index: 25;
 
   width: 50px;
@@ -841,28 +577,27 @@ a {
   padding: 0;
 
   border: 1px solid rgba(255, 255, 255, 0.2);
+
   border-radius: 50%;
 
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.25);
 
   font-size: 34px;
   font-weight: 300;
+
   line-height: 1;
 
   transform: translateY(-50%);
 
   transition:
     border-color 0.2s,
-    background 0.2s,
-    box-shadow 0.2s;
+    background 0.2s;
 }
 
 .carousel-arrow:hover {
-  border-color: var(--gold);
+  border-color: var(--red);
 
-  background: rgba(0, 122, 77, 0.12);
-
-  box-shadow: 0 0 18px rgba(242, 194, 48, 0.15);
+  background: rgba(239, 23, 34, 0.1);
 }
 
 .carousel-prev {
@@ -888,7 +623,6 @@ a {
   justify-content: center;
 
   gap: 10px;
-
   margin-bottom: 10px;
 
   text-align: center;
@@ -896,11 +630,11 @@ a {
 
 .car-kicker {
   margin-top: 8px;
-
   font-size: 9px;
+
   letter-spacing: 0.22em;
 
-  color: var(--gold);
+  color: #9aa2ac;
 }
 
 .car-info h2 {
@@ -931,13 +665,14 @@ a {
   color: var(--text);
 
   font-size: 10px;
+
   letter-spacing: 0.14em;
 
   cursor: pointer;
 }
 
 .wallpaper-button:hover {
-  color: var(--gold);
+  color: var(--red);
 }
 
 /* =========================================================
@@ -975,9 +710,9 @@ a {
 }
 
 .carousel-dots button.active {
-  background: var(--gold);
+  background: var(--red);
 
-  box-shadow: 0 0 10px rgba(242, 194, 48, 0.65);
+  box-shadow: 0 0 10px rgba(239, 23, 34, 0.7);
 }
 
 /* =========================================================
@@ -1015,33 +750,11 @@ a {
 
   width: min(1100px, 92%);
 
-  margin: 12px auto 0;
+  margin: 25px auto 0;
 
   border-top: 1px solid var(--line);
 
-  padding-top: 14px;
-}
-
-.pillars::before {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  right: 0;
-  top: -1px;
-
-  height: 2px;
-
-  background: linear-gradient(
-    90deg,
-    var(--green),
-    var(--gold),
-    var(--red),
-    var(--blue)
-  );
-
-  opacity: 0.7;
+  padding-top: 20px;
 }
 
 .pillars > div {
@@ -1070,30 +783,6 @@ a {
   font-size: 25px;
 }
 
-.pillars span {
-  color: var(--gold);
-}
-
-.pillars > div:nth-child(1) span {
-  color: var(--green);
-}
-
-.pillars > div:nth-child(2) span {
-  color: var(--gold);
-}
-
-.pillars > div:nth-child(3) strong {
-  color: var(--red);
-}
-
-.pillars > div:nth-child(4) span {
-  color: var(--blue);
-}
-
-.pillars > div:nth-child(5) span {
-  color: var(--cream);
-}
-
 .pillars b {
   font-size: 8px;
   font-weight: 500;
@@ -1108,80 +797,25 @@ a {
 
   text-align: center;
 
+  padding: 20px 20px 20px;
+
   border-top: 1px solid var(--line);
-  margin-top: 12px;
-  margin-bottom: 0;
-}
-
-.event::before {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  pointer-events: none;
-
-  opacity: 0.65;
-
-  background:
-    /* fine stitch pattern */
-    repeating-linear-gradient(
-      90deg,
-      transparent 0 18px,
-      rgba(242, 194, 48, 0.035) 19px 20px
-    ),
-    /* South African inspired diagonal fabric ribbons */
-    linear-gradient(
-        145deg,
-        transparent 0 58%,
-        rgba(0, 122, 77, 0.12) 59%,
-        transparent 62%
-      ),
-    linear-gradient(
-      145deg,
-      transparent 0 68%,
-      rgba(242, 194, 48, 0.1) 69%,
-      transparent 71%
-    ),
-    linear-gradient(
-      145deg,
-      transparent 0 78%,
-      rgba(215, 25, 32, 0.08) 79%,
-      transparent 81%
-    );
 }
 
 .event-intro {
   max-width: 700px;
+
   margin: auto;
 }
 
-.event__intro,
-.details,
-.rsvp {
-  position: relative;
-  z-index: 1;
-}
-
-.event__intro .eyebrow {
-  font-size: 18px;
-}
-
 .year {
-  margin: 2px 0 1px;
-
-  color: var(--cream);
+  margin: 0;
 
   font:
     700 italic clamp(76px, 8vw, 108px) / 0.82 Rajdhani,
     sans-serif;
 
   letter-spacing: -0.04em;
-
-  text-shadow:
-    5px 4px 0 rgba(0, 122, 77, 0.25),
-    -4px -2px 0 rgba(215, 25, 32, 0.14);
 }
 
 .event-intro h2::after {
@@ -1189,18 +823,12 @@ a {
 
   display: block;
 
-  width: 70px;
+  width: 55px;
   height: 2px;
 
   margin: 12px auto 0;
 
-  background: linear-gradient(
-    90deg,
-    var(--green),
-    var(--gold),
-    var(--red),
-    var(--blue)
-  );
+  background: var(--red);
 }
 
 .event h2 {
@@ -1210,33 +838,11 @@ a {
 }
 
 .event-intro > p:last-child {
-  margin: 12px auto 0;
-
-  color: #ffffff;
+  color: #d9dde2;
 
   font-size: 14px;
-  line-height: 1.45;
 
-  text-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.9),
-    0 4px 12px rgba(0, 0, 0, 0.65);
-}
-
-.hero-description {
-  margin: 12px auto 0;
-
-  max-width: 900px;
-
-  color: #ffffff;
-
-  font-size: 19px;
-  font-weight: 600;
-  line-height: 1.45;
-
-  text-shadow:
-    0 2px 4px rgba(0, 0, 0, 1),
-    0 4px 14px rgba(0, 0, 0, 0.9),
-    0 0 8px rgba(0, 0, 0, 0.55);
+  line-height: 1.6;
 }
 
 /* =========================================================
@@ -1246,26 +852,13 @@ a {
 .details {
   width: min(980px, 100%);
 
-  margin: 12px auto 20px;
+  margin: 55px auto 35px;
 
   display: grid;
 
   grid-template-columns: repeat(3, 1fr);
 
-  background: rgba(10, 18, 20, 0.82);
-
-  border: 1px solid rgba(255, 255, 255, 0.14);
-
-  border-radius: 8px;
-
-  overflow: hidden;
-
-  box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  border-block: 1px solid var(--line);
 }
 
 .details article {
@@ -1276,7 +869,7 @@ a {
 
   gap: 14px;
 
-  padding: 16px 20px;
+  padding: 20px;
 
   border-right: 1px solid var(--line);
 
@@ -1289,46 +882,12 @@ a {
 
 .details article > span {
   font-size: 35px;
-  color: var(--gold);
-}
-
-.details article:nth-child(1) > span {
-  color: var(--green);
-}
-
-.details article:nth-child(2) > span {
-  color: var(--gold);
-}
-
-.details article:nth-child(3) > span {
-  color: var(--blue);
-  transform: scale(1.18);
-}
-
-/* Venue link — preserves the existing design, but makes Southern Sun
-   visibly clickable on hover. */
-.details .venue-link {
-  display: block;
-  margin-top: 4px;
-  font-size: 13px;
-  font-weight: 700;
-  color: inherit;
-  text-decoration: none;
-  transition:
-    color 0.2s ease,
-    text-decoration 0.2s ease;
-}
-
-.details .venue-link:hover {
-  color: var(--red);
-  text-decoration: underline;
-  cursor: pointer;
 }
 
 .details label {
   display: block;
 
-  color: var(--gold);
+  color: var(--red);
 
   font-size: 11px;
 }
@@ -1340,14 +899,14 @@ a {
 
 .details strong {
   margin-top: 4px;
+
   font-size: 13px;
-  color: #ffffff;
 }
 
 .details small {
   margin-top: 3px;
 
-  color: #aeb8b5;
+  color: #9ea6b0;
 
   font-size: 9px;
 }
@@ -1356,14 +915,16 @@ a {
    RSVP
    ========================================================= */
 
+.rsvp {
+  margin-top: 45px;
+}
+
 .rsvp > p {
   font-size: 18px;
   font-weight: 600;
 }
 
 .cta {
-  position: relative;
-
   display: flex;
 
   align-items: center;
@@ -1379,52 +940,20 @@ a {
 
   border-radius: 16px;
 
-  background: linear-gradient(
-    90deg,
-    #007a4d 0%,
-    #008e59 20%,
-    #d71920 62%,
-    #ef1722 100%
-  );
-
-  box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.32),
-    0 0 30px rgba(215, 25, 32, 0.12);
+  background: linear-gradient(90deg, #d40713, #ef1722);
 
   font-size: 15px;
   font-weight: 700;
-
-  overflow: hidden;
-}
-
-.cta::before {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background: repeating-linear-gradient(
-    90deg,
-    transparent 0 24px,
-    rgba(255, 255, 255, 0.08) 25px 26px,
-    transparent 27px 50px
-  );
-
-  opacity: 0.35;
-
-  pointer-events: none;
 }
 
 .cta span {
-  position: relative;
   font-size: 28px;
 }
 
 .rsvp > small {
   display: block;
 
-  margin-top: 10px;
+  margin-top: 15px;
 
   font-size: 10px;
 }
@@ -1435,54 +964,24 @@ a {
 
 .closing {
   position: relative;
-
-  padding: 24px 0 70px;
-
+  padding: 25px 0px 100px;
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
-
   overflow: hidden;
-
   text-align: center;
-
   background:
-    /* woven texture */
+    linear-gradient(180deg, #090b0f, #050608),
     repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.014) 0,
-      rgba(255, 255, 255, 0.014) 1px,
-      transparent 1px,
-      transparent 8px
-    ),
-    /* colour ribbons */
-    linear-gradient(
-        165deg,
-        transparent 0 25%,
-        rgba(0, 122, 77, 0.1) 26%,
-        transparent 31%
-      ),
-    linear-gradient(
-      170deg,
-      transparent 0 47%,
-      rgba(242, 194, 48, 0.08) 48%,
-      transparent 52%
-    ),
-    linear-gradient(
       175deg,
-      transparent 0 68%,
-      rgba(215, 25, 32, 0.09) 69%,
-      transparent 73%
-    ),
-    linear-gradient(180deg, #090b0f, #050608);
+      transparent 0 20px,
+      rgba(239, 23, 34, 0.1) 21px 23px
+    );
 }
 
 .closing p {
   position: relative;
-
   margin: 3px;
 
   font-size: 22px;
@@ -1491,36 +990,16 @@ a {
 }
 
 .closing strong {
-  color: var(--gold);
+  color: var(--red);
+
   font-weight: 500;
 }
 
 .closing span {
   position: relative;
-
   margin-top: 28px;
-
   font-size: 12px;
   letter-spacing: 0.16em;
-}
-
-.closing__lines {
-  position: absolute;
-
-  inset: 40% -10%;
-
-  background: repeating-linear-gradient(
-    0deg,
-    transparent 0 15px,
-    rgba(0, 122, 77, 0.14) 16px 17px,
-    rgba(242, 194, 48, 0.14) 18px 19px,
-    rgba(215, 25, 32, 0.14) 20px 21px,
-    transparent 22px 30px
-  );
-
-  transform: perspective(200px) rotateX(45deg);
-
-  filter: blur(1.5px);
 }
 
 /* =========================================================
@@ -1529,40 +1008,20 @@ a {
 
 footer {
   min-height: 72px;
-
   display: flex;
-
   align-items: center;
   justify-content: center;
-
   gap: 22px;
-
   padding: 18px 20px;
-
   border-top: 1px solid var(--line);
-
   font-size: 12px;
-
   color: #e7e9ec;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(0, 122, 77, 0.035),
-      transparent 30%,
-      transparent 70%,
-      rgba(0, 63, 125, 0.035)
-    ),
-    #030506;
 }
 
 .footer-content {
   width: min(1400px, 100%);
-
   display: grid;
-
   grid-template-columns: 1fr 2fr 1fr;
-
   align-items: center;
 }
 
@@ -1579,7 +1038,7 @@ footer {
 }
 
 .footer a:hover {
-  color: var(--gold);
+  color: var(--red);
 }
 
 .footer i {
@@ -1610,15 +1069,19 @@ footer {
   display: grid;
 }
 
+/* Modal background */
+
 .modal-backdrop {
   position: absolute;
 
   inset: 0;
 
-  background: rgba(0, 0, 0, 0.84);
+  background: rgba(0, 0, 0, 0.82);
 
   backdrop-filter: blur(12px);
 }
+
+/* Modal panel */
 
 .modal-panel {
   position: relative;
@@ -1637,18 +1100,12 @@ footer {
 
   border: 1px solid var(--line);
 
-  background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.014) 0,
-      rgba(255, 255, 255, 0.014) 1px,
-      transparent 1px,
-      transparent 8px
-    ),
-    linear-gradient(145deg, #111817, #050708);
+  background: linear-gradient(145deg, #111820, #05070b);
 
   box-shadow: 0 30px 100px #000;
 }
+
+/* Close button */
 
 .modal-close {
   position: absolute;
@@ -1666,6 +1123,8 @@ footer {
   font-weight: 200;
 }
 
+/* Modal car area */
+
 .modal-car-art {
   position: relative;
 
@@ -1677,16 +1136,15 @@ footer {
 
   overflow: hidden;
 
-  background:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.018) 0,
-      rgba(255, 255, 255, 0.018) 1px,
-      transparent 1px,
-      transparent 9px
-    ),
-    radial-gradient(ellipse at 50% 50%, #35453f 0, #111918 45%, #040608 80%);
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    #35414c 0,
+    #10161d 45%,
+    #040608 80%
+  );
 }
+
+/* Red/accent line */
 
 .modal-car-art::before {
   content: "";
@@ -1700,18 +1158,12 @@ footer {
 
   height: 2px;
 
-  background: linear-gradient(
-    90deg,
-    var(--green),
-    var(--gold),
-    var(--red),
-    var(--blue)
-  );
+  background: var(--modal-accent, var(--red));
 
-  box-shadow:
-    0 0 25px rgba(242, 194, 48, 0.28),
-    0 0 35px rgba(215, 25, 32, 0.18);
+  box-shadow: 0 0 30px var(--modal-accent, var(--red));
 }
+
+/* Injected car image */
 
 .modal-car-art img {
   position: relative;
@@ -1726,6 +1178,8 @@ footer {
 
   filter: drop-shadow(0 35px 35px #000);
 }
+
+/* Modal copy */
 
 .modal-copy {
   padding: 80px 45px;
@@ -1753,6 +1207,8 @@ footer {
   line-height: 1.6;
 }
 
+/* Modal download button */
+
 .modal-wallpaper {
   margin-top: 25px;
 
@@ -1768,7 +1224,64 @@ footer {
 }
 
 .modal-wallpaper:hover {
-  border-color: var(--gold);
+  border-color: var(--red);
+}
+
+.event:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.45;
+  background:
+    linear-gradient(
+      145deg,
+      transparent 0 57%,
+      rgba(239, 23, 34, 0.16) 58%,
+      transparent 61%
+    ),
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 32px,
+      rgba(255, 255, 255, 0.015) 33px 34px
+    );
+}
+.event__intro,
+.details,
+.rsvp {
+  position: relative;
+  z-index: 1;
+}
+.event__intro .eyebrow {
+  font-size: 18px;
+}
+.closing__lines {
+  position: absolute;
+  inset: 40% -10%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 15px,
+    rgba(239, 23, 34, 0.22) 16px 18px,
+    transparent 19px 30px
+  );
+  transform: perspective(200px) rotateX(45deg);
+  filter: blur(2px);
+}
+.closing p {
+  position: relative;
+  margin: 3px;
+  font-size: 22px;
+  letter-spacing: 0.38em;
+}
+.closing p strong {
+  color: var(--red);
+  font-weight: 500;
+}
+.closing span {
+  position: relative;
+  margin-top: 28px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
 }
 
 /* =========================================================
@@ -1777,12 +1290,12 @@ footer {
 
 @media (max-width: 850px) {
   .hero {
-    min-height: 760px;
-    background-position: center top;
+    min-height: 900px;
   }
 
   .nav {
     width: calc(100% - 34px);
+
     padding: 22px 0;
   }
 
@@ -1792,10 +1305,6 @@ footer {
 
   .nav-tag {
     font-size: 8px;
-  }
-
-  .brand img {
-    width: min(320px, 65vw);
   }
 
   .car-showcase {
@@ -1893,20 +1402,11 @@ footer {
 
 @media (max-width: 520px) {
   .hero {
-    min-height: 700px;
+    min-height: 800px;
   }
 
   .hero h1 {
     font-size: 48px;
-  }
-
-  .hero-title {
-    font-size: 22px;
-  }
-
-  .hero-main-title {
-    padding: 4px 10px 5px;
-    font-size: 21px;
   }
 
   .eyebrow {
@@ -1915,19 +1415,6 @@ footer {
 
   .subline {
     font-size: 15px;
-  }
-
-  .nav {
-    width: calc(100% - 24px);
-  }
-
-  .brand img {
-    width: min(245px, 58vw);
-  }
-
-  .nav-tag {
-    font-size: 7px;
-    letter-spacing: 0.15em;
   }
 
   .car-showcase {
@@ -1952,6 +1439,7 @@ footer {
 
   .car-card.active {
     transform: translate(-50%, -50%) translateY(-50px) scale(1.8);
+
     opacity: 1;
   }
 
@@ -1986,7 +1474,7 @@ footer {
   }
 
   .event {
-    padding: 18px 20px 24px;
+    padding: 70px 20px 80px;
   }
 
   .closing {
@@ -2034,6 +1522,7 @@ footer {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+
     transition-duration: 0.01ms !important;
   }
 }

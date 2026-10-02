@@ -48,8 +48,6 @@
             <!-- EVENT -->
             <section class="event">
               <div class="rsvp">
-                <p class="event-kicker">THE LIGHTS ARE ABOUT TO GO OUT.</p>
-
                 <a href="rsvp.html" id="rsvpButton" class="cta">
                   TAKE YOUR PLACE ON THE GRID
                   <span>›</span>
@@ -57,6 +55,7 @@
 
                 <small>KINDLY RESPOND BY 15 OCTOBER 2026</small>
               </div>
+
               <div class="details">
                 <article>
                   <span>▦</span>
@@ -85,19 +84,10 @@
                     <label>VENUE</label>
 
                     <a
+                      class="venue-link"
                       href="https://www.southernsun.com/southern-sun-newlands"
                       target="_blank"
                       rel="noopener noreferrer"
-                      style="
-                        display: block;
-                        margin-top: 4px;
-                        font-size: 13px;
-                        font-weight: 700;
-                        color: inherit;
-                        text-decoration: none;
-                      "
-                      onmouseover="this.style.color = 'var(--red)'"
-                      onmouseout="this.style.color = 'inherit'"
                     >
                       Southern Sun ↗
                     </a>
@@ -110,7 +100,7 @@
               <!-- RSVP -->
             </section>
 
-            <p>
+            <p class="hero-description">
               Join us as we reflect on our journey, celebrate our achievements
               and drive forward our shared vision for a stronger, more
               sustainable industry.
@@ -119,7 +109,10 @@
             <span class="hashtag">#NBCAGM2026</span>
           </div>
         </div>
+      </section>
 
+      <!-- MACHINE / GRID SECTION -->
+      <section class="machine-section">
         <!-- CAR SHOWCASE -->
         <section
           class="car-showcase"
@@ -276,6 +269,7 @@
     <!-- AUDIO -->
 
     <audio id="mainMusic" loop src="../assets/audio/main.wav"></audio>
+
     <audio
       id="buttonClickSound"
       preload="auto"
