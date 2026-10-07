@@ -27,12 +27,19 @@ button {
   cursor: pointer;
 }
 
+/* =========================================================
+   OPENING PAGE
+   ========================================================= */
+
 .opening {
   position: fixed;
   inset: 0;
+
   display: grid;
   place-items: center;
+
   overflow: hidden;
+
   background:
     linear-gradient(
       180deg,
@@ -44,21 +51,33 @@ button {
     var(--bg);
 }
 
-/* Background noise */
+/* =========================================================
+   BACKGROUND NOISE
+   ========================================================= */
+
 .noise {
   position: absolute;
   inset: -50%;
+
   z-index: 0;
+
   opacity: 0.025;
+
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
   animation: noise 0.18s steps(2) infinite;
 }
 
-/* Background vignette */
+/* =========================================================
+   BACKGROUND VIGNETTE
+   ========================================================= */
+
 .vignette {
   position: absolute;
   inset: 0;
+
   z-index: 1;
+
   background: radial-gradient(
     circle at center,
     transparent 0%,
@@ -69,120 +88,296 @@ button {
   );
 }
 
-/* Company branding */
+/* =========================================================
+   COMPANY BRANDING
+   ========================================================= */
+
 .brand {
   position: absolute;
+
   top: 0;
   left: 0;
+
   z-index: 3;
 }
 
 .brand img {
   display: block;
+
   width: 450px;
   height: auto;
+
   filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.7));
 }
 
-/**
- * ENTRY.
- */
+/* =========================================================
+   ENTRY CONTENT
+   ========================================================= */
+
 .entry {
   position: absolute;
+
   top: 50%;
   left: 50%;
+
   z-index: 2;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 12px;
+
   width: max-content;
   min-width: 390px;
+
   padding: 42px 55px 38px;
+
   text-align: center;
+
   transform: translate(-50%, -50%);
+
   transition:
     opacity 0.4s ease,
     transform 0.4s ease;
 }
 
-/* Strong local readability panel behind the entry content */
+/* =========================================================
+   ENTRY HIDE STATE
+   ========================================================= */
 
 .entry.hide {
   opacity: 0;
+
   transform: translate(-50%, -50%) scale(0.97);
 }
 
+/* =========================================================
+   HASHTAG
+   ========================================================= */
+
 .entry p {
   margin: 0;
+
   font-size: 12px;
   font-weight: 700;
+
   letter-spacing: 0.28em;
+
   color: #ffffff;
+
   text-shadow:
     0 2px 4px rgba(0, 0, 0, 1),
     0 4px 12px rgba(0, 0, 0, 0.9);
 }
 
+/* =========================================================
+   RED RULE
+   ========================================================= */
+
 .rule {
   width: 42px;
   height: 2px;
+
   margin: 2px 0;
+
   background: var(--red);
+
   box-shadow: 0 0 10px rgba(239, 23, 34, 0.5);
 }
 
-.entry button {
-  display: inline-flex;
+/* =========================================================
+   ENTER EXPERIENCE BUTTON
+   Matches "TAKE YOUR PLACE ON THE GRID"
+   ========================================================= */
+
+.entry-cta {
+  position: relative;
+
+  display: flex;
+
   align-items: center;
-  gap: 28px;
+  justify-content: center;
+
+  gap: 30px;
+
+  width: min(480px, 100%);
+  min-width: 280px;
+
   margin: 18px 0 0;
-  padding: 15px 20px 15px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.2);
-  font-size: 12px;
+
+  padding: 18px 24px;
+
+  border: none;
+  border-radius: 16px;
+
+  background: linear-gradient(
+    90deg,
+    #007a4d 0%,
+    #008e59 20%,
+    #d71920 62%,
+    #ef1722 100%
+  );
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.32),
+    0 0 30px rgba(215, 25, 32, 0.12);
+
+  color: #ffffff;
+
+  font-family: Inter, Arial, sans-serif;
+
+  font-size: 15px;
   font-weight: 700;
-  letter-spacing: 0.16em;
-  text-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.95),
-    0 3px 8px rgba(0, 0, 0, 0.8);
+
+  letter-spacing: normal;
+
+  line-height: normal;
+
+  text-shadow: none;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  appearance: none;
+  -webkit-appearance: none;
+
   transition:
-    border-color 0.2s ease,
-    background 0.2s ease,
+    filter 0.2s ease,
     transform 0.2s ease;
 }
 
-.entry button:hover {
-  border-color: var(--red);
-  background: rgba(239, 23, 34, 0.14);
-  transform: translateY(-1px);
+/* =========================================================
+   BUTTON TEXTURE
+   ========================================================= */
+
+.entry-cta::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 24px,
+    rgba(255, 255, 255, 0.08) 25px 26px,
+    transparent 27px 50px
+  );
+
+  opacity: 0.35;
+
+  pointer-events: none;
 }
 
-.entry button span {
-  font-size: 20px;
+/* =========================================================
+   BUTTON TEXT
+   ========================================================= */
+
+.entry-cta-text {
+  position: relative;
+
+  z-index: 1;
+
+  color: #ffffff;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   BUTTON ARROW
+   ========================================================= */
+
+.entry-cta-arrow {
+  position: relative;
+
+  z-index: 1;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  font-size: 28px;
+  font-weight: 400;
+
   line-height: 1;
 }
 
+/* =========================================================
+   BUTTON HOVER
+   ========================================================= */
+
+.entry-cta:hover {
+  background: linear-gradient(
+    90deg,
+    #007a4d 0%,
+    #008e59 20%,
+    #d71920 62%,
+    #ef1722 100%
+  );
+
+  filter: brightness(1.08);
+
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   BUTTON ACTIVE
+   ========================================================= */
+
+.entry-cta:active {
+  transform: translateY(0);
+
+  filter: brightness(1);
+}
+
+/* =========================================================
+   BUTTON FOCUS
+   ========================================================= */
+
+.entry-cta:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+
+  outline-offset: 4px;
+}
+
+/* =========================================================
+   SOUND ON
+   ========================================================= */
+
 .entry small {
   margin: 0;
+
   font-size: 9px;
   font-weight: 700;
+
   letter-spacing: 0.25em;
+
   color: #ffffff;
+
   text-shadow:
     0 2px 4px rgba(0, 0, 0, 1),
     0 4px 10px rgba(0, 0, 0, 0.85);
 }
 
-/* Background animation */
+/* =========================================================
+   BACKGROUND ANIMATION
+   ========================================================= */
+
 @keyframes noise {
   50% {
     transform: translate(3%, -2%);
   }
 }
 
-/* Mobile */
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 520px) {
   .brand img {
     width: 280px;
@@ -190,12 +385,22 @@ button {
 
   .entry {
     min-width: 0;
+
     width: calc(100% - 40px);
+
     padding: 34px 24px 30px;
   }
 
-  .entry button {
-    padding: 13px 18px 13px 20px;
+  .entry-cta {
+    width: 100%;
+    min-width: 0;
+
+    padding: 13px 18px;
+
     font-size: 10px;
+  }
+
+  .entry-cta-arrow {
+    font-size: 24px;
   }
 }

@@ -1153,7 +1153,7 @@ a {
 }
 
 .event-intro {
-  max-width: 700px;
+  max-width: 1000px;
   margin: auto;
 }
 
@@ -1244,13 +1244,13 @@ a {
    ========================================================= */
 
 .details {
-  width: min(980px, 100%);
+  width: min(1100px, 100%);
 
   margin: 12px auto 20px;
 
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 
   background: rgba(10, 18, 20, 0.82);
 
@@ -1350,6 +1350,14 @@ a {
   color: #aeb8b5;
 
   font-size: 9px;
+}
+
+.keynote-speaker > span {
+  color: var(--gold);
+}
+
+.keynote-speaker small {
+  line-height: 1.25;
 }
 
 /* =========================================================
