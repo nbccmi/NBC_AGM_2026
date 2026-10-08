@@ -2,42 +2,42 @@ import { playAudio } from "./audio.js";
 
 const cars = [
   {
-    name: "SIGMA // 01",
+    name: "SACMA // 01",
     accent: "#ef1722",
     label: "01",
     file: "../assets/cars/sacma.png",
     wallpaper: "../assets/wallpapers/sacma.png",
   },
   {
-    name: "SACTRA // 02",
+    name: "SACTWU // 02",
     accent: "#f0f0f0",
     label: "02",
     file: "../assets/cars/sactwu.png",
     wallpaper: "../assets/wallpapers/sactwu.png",
   },
   {
-    name: "ENVI // 03",
+    name: "NBC // 03",
     accent: "#ef1722",
     label: "03",
     file: "../assets/cars/nbc.png",
     wallpaper: "../assets/wallpapers/nbc.png",
   },
   {
-    name: "ATARA // 04",
+    name: "ATASA // 04",
     accent: "#4bbdff",
     label: "04",
     file: "../assets/cars/atasa.png",
     wallpaper: "../assets/wallpapers/atasa.png",
   },
   {
-    name: "SAERA // 05",
+    name: "SAAA // 05",
     accent: "#ffd000",
     label: "05",
     file: "../assets/cars/saaa.png",
     wallpaper: "../assets/wallpapers/saaa.png",
   },
   {
-    name: "EPCARA // 06",
+    name: "EPCMA // 06",
     accent: "#00a651",
     label: "06",
     file: "../assets/cars/epcma.png",
